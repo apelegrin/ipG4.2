@@ -53,11 +53,14 @@ int main(){
     int numeroAlumnos;
     float sumaCalificaciones;
     float mediaCalificaciones;
+    float maximaCalificacion;
     
     numeroAprobados = 0;
     numeroAlumnos = 0;
     sumaCalificaciones = 0;
     mediaCalificaciones = 0;
+    maximaCalificacion = 0;
+    
 	cout << "Cargando fichero..." << endl;
     cargarFicheroFloat (S, "entrada3.txt");
 	/* Primer esquema de recorrido del primer modelo de acceso secuencial*/
@@ -69,12 +72,15 @@ int main(){
 		}
 		sumaCalificaciones = sumaCalificaciones + *EA;
 		numeroAlumnos++;
-		
+		if (*EA > maximaCalificacion){
+			maximaCalificacion = *EA;
+		}
 		EA++;
 	}//end-while
 	mediaCalificaciones = sumaCalificaciones / numeroAlumnos;
 	cout << "El número de aprobados es " << numeroAprobados << endl;
 	cout << "La media del curso es " << mediaCalificaciones << endl;
+	cout << "La máxima calificación es " << maximaCalificacion << endl;
 	return 0;
 }
 

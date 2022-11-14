@@ -1,44 +1,6 @@
 const char MARCA_FIN_LINEA = '\n';
 
-void guardarFichero (list<int> S, string nombre) {
-	ofstream f;
-	list<int>::iterator EA;
-
-	f.open (nombre);
-	if (!f) {
-		cout << "Error abriendo el fichero resultado" << endl;
-	}
-	else
-	{
-		EA = S.begin();
-		while (EA != S.end()) {
-			f << *EA << " ";
-			EA++;
-		}//end-while
-		f.close();
-	}
-};
-
-void cargarFichero (list<int> &S, string nombre) {
-	ifstream f;
-    int dato;
-    
-	f.open (nombre);
-	if (!f) {
-		cout << "Error abriendo el fichero de datos" << endl;
-	}
-	else {
-		S.clear(); // Borra el contenido previo de la lista
-		while (f >> dato) {
-			S.push_back (dato);
-		}
-		f.close();
-	}//end-if
-};
-
-///////////////////////////////////////////
-
-void guardarFichero (list<char> S, string nombre) {
+void Guardar_Fichero (list<char> S, string nombre) {
 	ofstream f;
 	list<char>::iterator EA;
 
@@ -48,23 +10,23 @@ void guardarFichero (list<char> S, string nombre) {
 	}
 	else
 	{
-		EA = S.begin();
-		while (EA != S.end()) {
+		EA = S.begin();	
+		while (EA != S.end()) {	
 			if (*EA == MARCA_FIN_LINEA) {
 				f << endl;
 			} else {
 				f << *EA;
 			}
 			EA++;
-		}//end-while
+		}
 		f.close();
 	}
-};
+}
 
-void cargarFichero (list<char> &S, string nombre) {
+void Cargar_Fichero (list<char> &S, string nombre) {
 	ifstream f;
 	string cadena;
-	unsigned int i;
+	int i;
 
 	f.open (nombre);
 	if (!f) {
@@ -73,49 +35,85 @@ void cargarFichero (list<char> &S, string nombre) {
 	else {
 		S.clear(); // Borra el contenido previo de la lista
 		while (getline(f, cadena)) {
-			for (i=0; i<cadena.length(); i++) {
+			for (i=0; i< (int) cadena.length(); i++) {
 				S.push_back (cadena[i]);
 			}
-		S.push_back (MARCA_FIN_LINEA);
-		}//end-while
-		f.close();
-	}//end-if
-};
+			S.push_back (MARCA_FIN_LINEA);
+		}
+	}
+	f.close();
+}
 
-///////////////////////////////////////////
-
-void guardarFichero (list<float> S, string nombre) {
+void Guardar_Fichero (list<float> S, string nombre) {
+	/* Genera datos y escribe en fichero y muestra en pantalla */
 	ofstream f;
 	list<float>::iterator EA;
 
 	f.open (nombre);
 	if (!f) {
-		cout << "Error abriendo el fichero resultado" << endl;
+			cout << "Error abriendo el fichero resultado" << endl;
 	}
 	else
 	{
-		EA = S.begin();
-		while (EA != S.end()) {
-			f << *EA << " ";
-			EA++;
-		}//end-while
-		f.close();
+			EA = S.begin();	
+			while (EA != S.end()) {	
+				f << *EA << " ";
+				EA++;
+			}
+			f.close();
 	}
-};
+}
 
-void cargarFichero (list<float> &S, string nombre) {
+void Cargar_Fichero (list<float> &S, string nombre) {
+
 	ifstream f;
-    float dato;
-    
+	float dato;
+		
 	f.open (nombre);
 	if (!f) {
-		cout << "Error abriendo el fichero de datos" << endl;
+			cout << "Error abriendo el fichero de datos" << endl;
 	}
-	else {
-		S.clear(); // Borra el contenido previo de la lista
-		while (f >> dato) {
-			S.push_back (dato);
-		}
-		f.close();
-	}//end-if
-};
+	else	{
+			while (f >> dato) { // mientras la lectura sea exitosa
+				S.push_back (dato); // Registrar (S, dato)
+			}
+			f.close();
+	}
+}
+
+void Guardar_Fichero (list<int> S, string nombre) {
+	/* Genera datos y escribe en fichero y muestra en pantalla */
+	ofstream f;
+	list<int>::iterator EA;
+
+	f.open (nombre);
+	if (!f) {
+			cout << "Error abriendo el fichero resultado" << endl;
+	}
+	else
+	{
+			EA = S.begin();	
+			while (EA != S.end()) {	
+				f << *EA << " ";
+				EA++;
+			}
+			f.close();
+	}
+}
+
+void Cargar_Fichero (list<int> &S, string nombre) {
+
+	ifstream f;
+	int dato;
+		
+	f.open (nombre);
+	if (!f) {
+			cout << "Error abriendo el fichero de datos" << endl;
+	}
+	else	{
+			while (f >> dato) { // mientras la lectura sea exitosa
+				S.push_back (dato); // Registrar (S, dato)
+			}
+			f.close();
+	}
+}
